@@ -1,0 +1,49 @@
+{
+  "bookings": [
+    {
+      "bookingID": "B001",
+      "memberID": "M001",
+      "facilityID": "F001",
+      "date": "2026-05-10",
+      "startTime": "09:00:00",
+      "endTime": "11:00:00",
+      "status": "Confirmed"
+    },
+    {
+      "bookingID": "B002",
+      "memberID": "M002",
+      "facilityID": "F002",
+      "date": "2026-05-11",
+      "startTime": "07:00:00",
+      "endTime": "08:00:00",
+      "status": "Pending"
+    },
+    {
+      "bookingID": "B003",
+      "memberID": "M003",
+      "facilityID": "F003",
+      "date": "2026-05-12",
+      "startTime": "10:00:00",
+      "endTime": "12:00:00",
+      "status": "Confirmed"
+    },
+    {
+      "bookingID": "B004",
+      "memberID": "M004",
+      "facilityID": "F004",
+      "date": "2026-05-13",
+      "startTime": "15:00:00",
+      "endTime": "16:00:00",
+      "status": "Cancelled"
+    },
+    {
+      "bookingID": "B005",
+      "memberID": "M005",
+      "facilityID": "F005",
+      "date": "2026-05-14",
+      "startTime": "06:30:00",
+      "endTime": "07:30:00",
+      "status": "Confirmed"
+    }
+  ]
+}

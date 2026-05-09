@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Membership Report — Sports Club</title>
+<style>
+                body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; color: #333; }
+                header { background: #0f4c81; color: white; padding: 20px 40px; }
+                header h1 { margin: 0; font-size: 1.8em; }
+                header p  { margin: 4px 0 0; opacity: 0.85; }
+                main { padding: 30px 40px; }
+                .summary { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+                .summary-card { background: white; border-radius: 8px; padding: 14px 20px;
+                                box-shadow: 0 2px 6px rgba(0,0,0,0.08); flex: 1; min-width: 120px; }
+                .summary-card .cat   { font-size: 0.8em; color: #6b7280; text-transform: uppercase;
+                                       letter-spacing: 0.05em; font-weight: bold; }
+                .summary-card .count { font-size: 1.8em; font-weight: bold; color: #0f4c81; }
+                .summary-card .fee   { font-size: 0.82em; color: #059669; margin-top: 2px; }
+                table { width: 100%; border-collapse: collapse; background: white;
+                        box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-radius: 6px;
+                        overflow: hidden; }
+                th { background: #0f4c81; color: white; padding: 12px 16px;
+                     text-align: left; font-size: 0.9em; }
+                td { padding: 11px 16px; border-bottom: 1px solid #e8ecf0; font-size: 0.92em; }
+                tr:last-child td { border-bottom: none; }
+                tr:hover td { background: #f0f7ff; }
+                .cat-basic   { background: #e0f2fe; color: #0369a1; }
+                .cat-premium { background: #fef3c7; color: #92400e; }
+                .cat-vip     { background: #f3e8ff; color: #7e22ce; }
+                .cat-student { background: #dcfce7; color: #166534; }
+                .cat-badge   { display: inline-block; padding: 2px 10px; border-radius: 12px;
+                               font-size: 0.82em; font-weight: bold; }
+                .fee-cell    { font-weight: bold; color: #059669; }
+                .id          { font-family: monospace; font-size: 0.82em; color: #9ca3af; }
+                tfoot td     { background: #f8fafc; font-weight: bold; border-top: 2px solid #0f4c81; }
+                footer { text-align: center; padding: 20px; font-size: 0.82em; color: #9ca3af; }
+            </style>
+</head>
+<body>
+<header><h1>💳 Membership Report</h1>
+<p>Total memberships: 5</p></header><main><div class="summary">
+<div class="summary-card">
+<div class="cat">Basic</div>
+<div class="count">1</div>
+<div class="fee">
+                            €150</div>
+</div>
+<div class="summary-card">
+<div class="cat">Premium</div>
+<div class="count">2</div>
+<div class="fee">
+                            €570</div>
+</div>
+<div class="summary-card">
+<div class="cat">VIP</div>
+<div class="count">1</div>
+<div class="fee">
+                            €500</div>
+</div>
+<div class="summary-card">
+<div class="cat">Student</div>
+<div class="count">1</div>
+<div class="fee">
+                            €80</div>
+</div>
+</div>
+<table>
+<thead><tr>
+<th>ID</th>
+<th>Member</th>
+<th>Category</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th>Fee (€)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="id">MS002</td>
+<td>
+<strong>Bruno Dupont</strong><span class="id"> (M002)</span>
+</td>
+<td><span class="cat-badge cat-basic">Basic</span></td>
+<td>2026-01-01</td>
+<td>2026-06-30</td>
+<td class="fee-cell">€150.00</td>
+</tr>
+<tr>
+<td class="id">MS001</td>
+<td>
+<strong>Alice Martin</strong><span class="id"> (M001)</span>
+</td>
+<td><span class="cat-badge cat-premium">Premium</span></td>
+<td>2026-01-01</td>
+<td>2026-12-31</td>
+<td class="fee-cell">€300.00</td>
+</tr>
+<tr>
+<td class="id">MS005</td>
+<td>
+<strong>Emma Bernard</strong><span class="id"> (M005)</span>
+</td>
+<td><span class="cat-badge cat-premium">Premium</span></td>
+<td>2026-03-01</td>
+<td>2026-12-31</td>
+<td class="fee-cell">€270.00</td>
+</tr>
+<tr>
+<td class="id">MS003</td>
+<td>
+<strong>Clara Nguyen</strong><span class="id"> (M003)</span>
+</td>
+<td><span class="cat-badge cat-student">Student</span></td>
+<td>2026-02-01</td>
+<td>2026-07-31</td>
+<td class="fee-cell">€80.00</td>
+</tr>
+<tr>
+<td class="id">MS004</td>
+<td>
+<strong>David Leroy</strong><span class="id"> (M004)</span>
+</td>
+<td><span class="cat-badge cat-vip">⭐ VIP</span></td>
+<td>2026-01-01</td>
+<td>2026-12-31</td>
+<td class="fee-cell">€500.00</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td colspan="5">Total Revenue</td>
+<td class="fee-cell">€1300</td>
+</tr></tfoot>
+</table></main><footer>Sports Club Database Platform — A25 Data Pipeline 1</footer>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================
+    FILE: sportsclub.xsd
+    PURPOSE: XML Schema for Sports Club Database
+    ENTITIES: Members, Coaches, Teams, Facilities,
+              TrainingSessions, Competitions,
+              Equipment, Memberships, Bookings
+    ============================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- ===========================
+         STEP 3: CUSTOM SIMPLE TYPES
+         =========================== -->
+
+    <!-- Age must be between 5 and 100 -->
+    <xs:simpleType name="AgeType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="5"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Email format validation -->
+    <xs:simpleType name="EmailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^@]+\.[^@]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Phone number format -->
+    <xs:simpleType name="PhoneType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9+\- ]{7,20}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Gender restricted to Male/Female/Other -->
+    <xs:simpleType name="GenderType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Male"/>
+            <xs:enumeration value="Female"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Membership type options -->
+    <xs:simpleType name="MembershipCategoryType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Basic"/>
+            <xs:enumeration value="Premium"/>
+            <xs:enumeration value="VIP"/>
+            <xs:enumeration value="Student"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Booking status options -->
+    <xs:simpleType name="BookingStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Confirmed"/>
+            <xs:enumeration value="Pending"/>
+            <xs:enumeration value="Cancelled"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Positive decimal for fees/prices -->
+    <xs:simpleType name="PriceType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Capacity must be positive integer -->
+    <xs:simpleType name="CapacityType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ===========================
+         STEP 4: COMPLEX TYPES
+         (One per entity)
+         =========================== -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 1: MEMBER
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="MemberType">
+        <xs:sequence>
+            <xs:element name="Name"     type="xs:string"/>
+            <xs:element name="Age"      type="AgeType"/>
+            <xs:element name="Gender"   type="GenderType"/>
+            <xs:element name="Email"    type="EmailType"/>
+            <xs:element name="Phone"    type="PhoneType"/>
+            <xs:element name="Address"  type="xs:string"
+                        minOccurs="0"/>
+            <xs:element name="JoinDate" type="xs:date"/>
+        </xs:sequence>
+        <!-- memberID is unique identifier -->
+        <xs:attribute name="memberID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 2: COACH
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="CoachType">
+        <xs:sequence>
+            <xs:element name="Name"       type="xs:string"/>
+            <xs:element name="Speciality" type="xs:string"/>
+            <xs:element name="Email"      type="EmailType"/>
+            <xs:element name="Phone"      type="PhoneType"/>
+            <xs:element name="Experience"
+                        type="xs:integer"/>
+        </xs:sequence>
+        <xs:attribute name="coachID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 3: FACILITY
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="FacilityType">
+        <xs:sequence>
+            <xs:element name="Name"     type="xs:string"/>
+            <xs:element name="Type"     type="xs:string"/>
+            <xs:element name="Capacity" type="CapacityType"/>
+            <xs:element name="Location" type="xs:string"/>
+            <xs:element name="Available"
+                        type="xs:boolean"/>
+        </xs:sequence>
+        <xs:attribute name="facilityID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 4: TEAM
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="TeamType">
+        <xs:sequence>
+            <xs:element name="Name"     type="xs:string"/>
+            <xs:element name="Sport"    type="xs:string"/>
+            <!-- coachRef links to a Coach -->
+            <xs:element name="CoachRef" type="xs:string"/>
+            <xs:element name="Level"    type="xs:string"/>
+            <!-- List of member references -->
+            <xs:element name="Members">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="MemberRef"
+                                    type="xs:string"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="teamID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 5: TRAINING SESSION
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="TrainingSessionType">
+        <xs:sequence>
+            <xs:element name="Title"       type="xs:string"/>
+            <xs:element name="Date"        type="xs:date"/>
+            <xs:element name="StartTime"   type="xs:time"/>
+            <xs:element name="EndTime"     type="xs:time"/>
+            <!-- Links to coach and facility -->
+            <xs:element name="CoachRef"    type="xs:string"/>
+            <xs:element name="FacilityRef" type="xs:string"/>
+            <xs:element name="MaxCapacity" type="CapacityType"/>
+        </xs:sequence>
+        <xs:attribute name="sessionID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 6: COMPETITION
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="CompetitionType">
+        <xs:sequence>
+            <xs:element name="Name"        type="xs:string"/>
+            <xs:element name="Date"        type="xs:date"/>
+            <xs:element name="Location"    type="xs:string"/>
+            <xs:element name="Sport"       type="xs:string"/>
+            <xs:element name="Result"      type="xs:string"
+                        minOccurs="0"/>
+            <!-- Which team participated -->
+            <xs:element name="TeamRef"     type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="competitionID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 7: EQUIPMENT
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="EquipmentType">
+        <xs:sequence>
+            <xs:element name="Name"       type="xs:string"/>
+            <xs:element name="Category"   type="xs:string"/>
+            <xs:element name="Quantity"   type="xs:integer"/>
+            <xs:element name="Condition"  type="xs:string"/>
+            <!-- Which facility stores it -->
+            <xs:element name="FacilityRef"
+                        type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="equipmentID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 8: MEMBERSHIP
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="MembershipType">
+        <xs:sequence>
+            <!-- Links to a member -->
+            <xs:element name="MemberRef"  type="xs:string"/>
+            <xs:element name="Category"
+                        type="MembershipCategoryType"/>
+            <xs:element name="StartDate"  type="xs:date"/>
+            <xs:element name="EndDate"    type="xs:date"/>
+            <xs:element name="Fee"        type="PriceType"/>
+        </xs:sequence>
+        <xs:attribute name="membershipID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~
+         ENTITY 9: BOOKING
+         ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <xs:complexType name="BookingType">
+        <xs:sequence>
+            <!-- Links to member and facility -->
+            <xs:element name="MemberRef"   type="xs:string"/>
+            <xs:element name="FacilityRef" type="xs:string"/>
+            <xs:element name="Date"        type="xs:date"/>
+            <xs:element name="StartTime"   type="xs:time"/>
+            <xs:element name="EndTime"     type="xs:time"/>
+            <xs:element name="Status"
+                        type="BookingStatusType"/>
+        </xs:sequence>
+        <xs:attribute name="bookingID"
+                      type="xs:string"
+                      use="required"/>
+    </xs:complexType>
+
+    <!-- ===========================
+         STEP 5: ROOT ELEMENT
+         =========================== -->
+    <xs:element name="SportsClub">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- All 9 entity containers -->
+                <xs:element name="Members">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Member"
+                                        type="MemberType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Coaches">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Coach"
+                                        type="CoachType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Facilities">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Facility"
+                                        type="FacilityType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Teams">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Team"
+                                        type="TeamType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="TrainingSessions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="TrainingSession"
+                                        type="TrainingSessionType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Competitions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Competition"
+                                        type="CompetitionType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Equipment">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Item"
+                                        type="EquipmentType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Memberships">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Membership"
+                                        type="MembershipType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Bookings">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Booking"
+                                        type="BookingType"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+        <!-- ===========================
+             STEP 6: KEY & KEYREF RULES
+             =========================== -->
+
+        <!-- PRIMARY KEYS (unique IDs) -->
+        <xs:key name="MemberKey">
+            <xs:selector xpath="Members/Member"/>
+            <xs:field xpath="@memberID"/>
+        </xs:key>
+
+        <xs:key name="CoachKey">
+            <xs:selector xpath="Coaches/Coach"/>
+            <xs:field xpath="@coachID"/>
+        </xs:key>
+
+        <xs:key name="FacilityKey">
+            <xs:selector xpath="Facilities/Facility"/>
+            <xs:field xpath="@facilityID"/>
+        </xs:key>
+
+        <xs:key name="TeamKey">
+            <xs:selector xpath="Teams/Team"/>
+            <xs:field xpath="@teamID"/>
+        </xs:key>
+
+        <xs:key name="SessionKey">
+            <xs:selector xpath="TrainingSessions/TrainingSession"/>
+            <xs:field xpath="@sessionID"/>
+        </xs:key>
+
+        <xs:key name="CompetitionKey">
+            <xs:selector xpath="Competitions/Competition"/>
+            <xs:field xpath="@competitionID"/>
+        </xs:key>
+
+        <xs:key name="EquipmentKey">
+            <xs:selector xpath="Equipment/Item"/>
+            <xs:field xpath="@equipmentID"/>
+        </xs:key>
+
+        <xs:key name="MembershipKey">
+            <xs:selector xpath="Memberships/Membership"/>
+            <xs:field xpath="@membershipID"/>
+        </xs:key>
+
+        <xs:key name="BookingKey">
+            <xs:selector xpath="Bookings/Booking"/>
+            <xs:field xpath="@bookingID"/>
+        </xs:key>
+
+        <!-- FOREIGN KEYS (referential integrity) -->
+
+        <!-- Booking → Member must exist -->
+        <xs:keyref name="BookingMemberRef"
+                   refer="MemberKey">
+            <xs:selector xpath="Bookings/Booking"/>
+            <xs:field xpath="MemberRef"/>
+        </xs:keyref>
+
+        <!-- Booking → Facility must exist -->
+        <xs:keyref name="BookingFacilityRef"
+                   refer="FacilityKey">
+            <xs:selector xpath="Bookings/Booking"/>
+            <xs:field xpath="FacilityRef"/>
+        </xs:keyref>
+
+        <!-- Membership → Member must exist -->
+        <xs:keyref name="MembershipMemberRef"
+                   refer="MemberKey">
+            <xs:selector xpath="Memberships/Membership"/>
+            <xs:field xpath="MemberRef"/>
+        </xs:keyref>
+
+        <!-- TrainingSession → Coach must exist -->
+        <xs:keyref name="SessionCoachRef"
+                   refer="CoachKey">
+            <xs:selector xpath="TrainingSessions/TrainingSession"/>
+            <xs:field xpath="CoachRef"/>
+        </xs:keyref>
+
+        <!-- TrainingSession → Facility must exist -->
+        <xs:keyref name="SessionFacilityRef"
+                   refer="FacilityKey">
+            <xs:selector xpath="TrainingSessions/TrainingSession"/>
+            <xs:field xpath="FacilityRef"/>
+        </xs:keyref>
+
+        <!-- Team → Coach must exist -->
+        <xs:keyref name="TeamCoachRef"
+                   refer="CoachKey">
+            <xs:selector xpath="Teams/Team"/>
+            <xs:field xpath="CoachRef"/>
+        </xs:keyref>
+
+        <!-- Competition → Team must exist -->
+        <xs:keyref name="CompetitionTeamRef"
+                   refer="TeamKey">
+            <xs:selector xpath="Competitions/Competition"/>
+            <xs:field xpath="TeamRef"/>
+        </xs:keyref>
+
+        <!-- Equipment → Facility must exist -->
+        <xs:keyref name="EquipmentFacilityRef"
+                   refer="FacilityKey">
+            <xs:selector xpath="Equipment/Item"/>
+            <xs:field xpath="FacilityRef"/>
+        </xs:keyref>
+
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,52 @@
+<ScheduleExport>
+  <Session>
+    <SessionID>S001</SessionID>
+    <Title>Football Morning Training</Title>
+    <Date>2026-05-01</Date>
+    <StartTime>08:00:00</StartTime>
+    <EndTime>10:00:00</EndTime>
+    <CoachRef>C001</CoachRef>
+    <FacilityRef>F001</FacilityRef>
+    <MaxCapacity>22</MaxCapacity>
+  </Session>
+  <Session>
+    <SessionID>S002</SessionID>
+    <Title>Swimming Endurance Session</Title>
+    <Date>2026-05-02</Date>
+    <StartTime>07:00:00</StartTime>
+    <EndTime>09:00:00</EndTime>
+    <CoachRef>C002</CoachRef>
+    <FacilityRef>F002</FacilityRef>
+    <MaxCapacity>20</MaxCapacity>
+  </Session>
+  <Session>
+    <SessionID>S003</SessionID>
+    <Title>Basketball Drills</Title>
+    <Date>2026-05-03</Date>
+    <StartTime>10:00:00</StartTime>
+    <EndTime>12:00:00</EndTime>
+    <CoachRef>C003</CoachRef>
+    <FacilityRef>F003</FacilityRef>
+    <MaxCapacity>20</MaxCapacity>
+  </Session>
+  <Session>
+    <SessionID>S004</SessionID>
+    <Title>Tennis Serve Practice</Title>
+    <Date>2026-05-04</Date>
+    <StartTime>14:00:00</StartTime>
+    <EndTime>16:00:00</EndTime>
+    <CoachRef>C004</CoachRef>
+    <FacilityRef>F004</FacilityRef>
+    <MaxCapacity>4</MaxCapacity>
+  </Session>
+  <Session>
+    <SessionID>S005</SessionID>
+    <Title>Morning Yoga Flow</Title>
+    <Date>2026-05-05</Date>
+    <StartTime>06:30:00</StartTime>
+    <EndTime>07:30:00</EndTime>
+    <CoachRef>C005</CoachRef>
+    <FacilityRef>F005</FacilityRef>
+    <MaxCapacity>15</MaxCapacity>
+  </Session>
+</ScheduleExport>

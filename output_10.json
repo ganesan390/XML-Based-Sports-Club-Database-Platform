@@ -1,0 +1,44 @@
+{
+  "equipment": [
+    {
+      "equipmentID": "E001",
+      "name": "Football",
+      "category": "Ball Sports",
+      "quantity": 20,
+      "condition": "Good",
+      "facilityRef": "F001"
+    },
+    {
+      "equipmentID": "E002",
+      "name": "Swimming Goggles",
+      "category": "Water Sports",
+      "quantity": 30,
+      "condition": "Excellent",
+      "facilityRef": "F002"
+    },
+    {
+      "equipmentID": "E003",
+      "name": "Basketball",
+      "category": "Ball Sports",
+      "quantity": 15,
+      "condition": "Good",
+      "facilityRef": "F003"
+    },
+    {
+      "equipmentID": "E004",
+      "name": "Tennis Racket",
+      "category": "Racket Sports",
+      "quantity": 10,
+      "condition": "Fair",
+      "facilityRef": "F004"
+    },
+    {
+      "equipmentID": "E005",
+      "name": "Yoga Mat",
+      "category": "Fitness",
+      "quantity": 20,
+      "condition": "Excellent",
+      "facilityRef": "F005"
+    }
+  ]
+}

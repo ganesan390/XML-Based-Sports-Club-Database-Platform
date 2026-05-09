@@ -1,0 +1,37 @@
+<ContactList>
+  <Contact>
+    <MemberID>M001</MemberID>
+    <Name>Alice Martin</Name>
+    <Email>alice.martin@email.com</Email>
+    <Phone>+33 6 12 34 56 78</Phone>
+    <Address>12 Rue de Paris, Lyon</Address>
+  </Contact>
+  <Contact>
+    <MemberID>M002</MemberID>
+    <Name>Bruno Dupont</Name>
+    <Email>bruno.dupont@email.com</Email>
+    <Phone>+33 6 98 76 54 32</Phone>
+    <Address>5 Avenue Foch, Paris</Address>
+  </Contact>
+  <Contact>
+    <MemberID>M003</MemberID>
+    <Name>Clara Nguyen</Name>
+    <Email>clara.nguyen@email.com</Email>
+    <Phone>+33 7 11 22 33 44</Phone>
+    <Address>8 Rue Moliere, Bordeaux</Address>
+  </Contact>
+  <Contact>
+    <MemberID>M004</MemberID>
+    <Name>David Leroy</Name>
+    <Email>david.leroy@email.com</Email>
+    <Phone>+33 6 55 44 33 22</Phone>
+    <Address>20 Rue Victor Hugo, Marseille</Address>
+  </Contact>
+  <Contact>
+    <MemberID>M005</MemberID>
+    <Name>Emma Bernard</Name>
+    <Email>emma.bernard@email.com</Email>
+    <Phone>+33 7 99 88 77 66</Phone>
+    <Address>3 Boulevard Gambetta, Toulouse</Address>
+  </Contact>
+</ContactList>

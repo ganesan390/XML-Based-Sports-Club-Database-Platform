@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================
+    FILE: sportsclub.xml
+    PURPOSE: Sample XML database for Sports Club
+    VALIDATED AGAINST: sportsclub.xsd
+    ============================================
+-->
+<SportsClub
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="sportsclub.xsd">
+
+    <!-- ========================
+         ENTITY 1: MEMBERS (x5)
+         ======================== -->
+    <Members>
+        <Member memberID="M001">
+            <Name>Alice Martin</Name>
+            <Age>25</Age>
+            <Gender>Female</Gender>
+            <Email>alice.martin@email.com</Email>
+            <Phone>+33 6 12 34 56 78</Phone>
+            <Address>12 Rue de Paris, Lyon</Address>
+            <JoinDate>2023-01-15</JoinDate>
+        </Member>
+        <Member memberID="M002">
+            <Name>Bruno Dupont</Name>
+            <Age>30</Age>
+            <Gender>Male</Gender>
+            <Email>bruno.dupont@email.com</Email>
+            <Phone>+33 6 98 76 54 32</Phone>
+            <Address>5 Avenue Foch, Paris</Address>
+            <JoinDate>2022-06-10</JoinDate>
+        </Member>
+        <Member memberID="M003">
+            <Name>Clara Nguyen</Name>
+            <Age>22</Age>
+            <Gender>Female</Gender>
+            <Email>clara.nguyen@email.com</Email>
+            <Phone>+33 7 11 22 33 44</Phone>
+            <Address>8 Rue Molière, Bordeaux</Address>
+            <JoinDate>2024-03-01</JoinDate>
+        </Member>
+        <Member memberID="M004">
+            <Name>David Leroy</Name>
+            <Age>35</Age>
+            <Gender>Male</Gender>
+            <Email>david.leroy@email.com</Email>
+            <Phone>+33 6 55 44 33 22</Phone>
+            <Address>20 Rue Victor Hugo, Marseille</Address>
+            <JoinDate>2021-09-20</JoinDate>
+        </Member>
+        <Member memberID="M005">
+            <Name>Emma Bernard</Name>
+            <Age>28</Age>
+            <Gender>Female</Gender>
+            <Email>emma.bernard@email.com</Email>
+            <Phone>+33 7 99 88 77 66</Phone>
+            <Address>3 Boulevard Gambetta, Toulouse</Address>
+            <JoinDate>2023-11-05</JoinDate>
+        </Member>
+    </Members>
+
+    <!-- ========================
+         ENTITY 2: COACHES (x5)
+         ======================== -->
+    <Coaches>
+        <Coach coachID="C001">
+            <Name>Jean Moreau</Name>
+            <Speciality>Football</Speciality>
+            <Email>jean.moreau@sportsclub.com</Email>
+            <Phone>+33 6 10 20 30 40</Phone>
+            <Experience>10</Experience>
+        </Coach>
+        <Coach coachID="C002">
+            <Name>Sophie Lambert</Name>
+            <Speciality>Swimming</Speciality>
+            <Email>sophie.lambert@sportsclub.com</Email>
+            <Phone>+33 6 50 60 70 80</Phone>
+            <Experience>7</Experience>
+        </Coach>
+        <Coach coachID="C003">
+            <Name>Marc Petit</Name>
+            <Speciality>Basketball</Speciality>
+            <Email>marc.petit@sportsclub.com</Email>
+            <Phone>+33 7 30 40 50 60</Phone>
+            <Experience>5</Experience>
+        </Coach>
+        <Coach coachID="C004">
+            <Name>Laura Simon</Name>
+            <Speciality>Tennis</Speciality>
+            <Email>laura.simon@sportsclub.com</Email>
+            <Phone>+33 6 70 80 90 11</Phone>
+            <Experience>12</Experience>
+        </Coach>
+        <Coach coachID="C005">
+            <Name>Pierre Blanc</Name>
+            <Speciality>Yoga</Speciality>
+            <Email>pierre.blanc@sportsclub.com</Email>
+            <Phone>+33 7 22 33 44 55</Phone>
+            <Experience>3</Experience>
+        </Coach>
+    </Coaches>
+
+    <!-- ========================
+         ENTITY 3: FACILITIES (x5)
+         ======================== -->
+    <Facilities>
+        <Facility facilityID="F001">
+            <Name>Main Football Pitch</Name>
+            <Type>Outdoor Field</Type>
+            <Capacity>22</Capacity>
+            <Location>North Wing</Location>
+            <Available>true</Available>
+        </Facility>
+        <Facility facilityID="F002">
+            <Name>Olympic Swimming Pool</Name>
+            <Type>Indoor Pool</Type>
+            <Capacity>50</Capacity>
+            <Location>East Wing</Location>
+            <Available>true</Available>
+        </Facility>
+        <Facility facilityID="F003">
+            <Name>Basketball Court A</Name>
+            <Type>Indoor Court</Type>
+            <Capacity>20</Capacity>
+            <Location>South Wing</Location>
+            <Available>false</Available>
+        </Facility>
+        <Facility facilityID="F004">
+            <Name>Tennis Court 1</Name>
+            <Type>Outdoor Court</Type>
+            <Capacity>4</Capacity>
+            <Location>West Wing</Location>
+            <Available>true</Available>
+        </Facility>
+        <Facility facilityID="F005">
+            <Name>Yoga Studio</Name>
+            <Type>Indoor Studio</Type>
+            <Capacity>15</Capacity>
+            <Location>Central Building</Location>
+            <Available>true</Available>
+        </Facility>
+    </Facilities>
+
+    <!-- ========================
+         ENTITY 4: TEAMS (x5)
+         ======================== -->
+    <Teams>
+        <Team teamID="T001">
+            <Name>Lions FC</Name>
+            <Sport>Football</Sport>
+            <CoachRef>C001</CoachRef>
+            <Level>Advanced</Level>
+            <Members>
+                <MemberRef>M001</MemberRef>
+                <MemberRef>M002</MemberRef>
+            </Members>
+        </Team>
+        <Team teamID="T002">
+            <Name>Sharks Swimming</Name>
+            <Sport>Swimming</Sport>
+            <CoachRef>C002</CoachRef>
+            <Level>Intermediate</Level>
+            <Members>
+                <MemberRef>M003</MemberRef>
+                <MemberRef>M004</MemberRef>
+            </Members>
+        </Team>
+        <Team teamID="T003">
+            <Name>Eagles Basketball</Name>
+            <Sport>Basketball</Sport>
+            <CoachRef>C003</CoachRef>
+            <Level>Beginner</Level>
+            <Members>
+                <MemberRef>M005</MemberRef>
+                <MemberRef>M001</MemberRef>
+            </Members>
+        </Team>
+        <Team teamID="T004">
+            <Name>Aces Tennis</Name>
+            <Sport>Tennis</Sport>
+            <CoachRef>C004</CoachRef>
+            <Level>Advanced</Level>
+            <Members>
+                <MemberRef>M002</MemberRef>
+                <MemberRef>M003</MemberRef>
+            </Members>
+        </Team>
+        <Team teamID="T005">
+            <Name>Zen Yoga</Name>
+            <Sport>Yoga</Sport>
+            <CoachRef>C005</CoachRef>
+            <Level>Beginner</Level>
+            <Members>
+                <MemberRef>M004</MemberRef>
+                <MemberRef>M005</MemberRef>
+            </Members>
+        </Team>
+    </Teams>
+
+    <!-- ================================
+         ENTITY 5: TRAINING SESSIONS (x5)
+         ================================ -->
+    <TrainingSessions>
+        <TrainingSession sessionID="S001">
+            <Title>Football Morning Training</Title>
+            <Date>2026-05-01</Date>
+            <StartTime>08:00:00</StartTime>
+            <EndTime>10:00:00</EndTime>
+            <CoachRef>C001</CoachRef>
+            <FacilityRef>F001</FacilityRef>
+            <MaxCapacity>22</MaxCapacity>
+        </TrainingSession>
+        <TrainingSession sessionID="S002">
+            <Title>Swimming Endurance Session</Title>
+            <Date>2026-05-02</Date>
+            <StartTime>07:00:00</StartTime>
+            <EndTime>09:00:00</EndTime>
+            <CoachRef>C002</CoachRef>
+            <FacilityRef>F002</FacilityRef>
+            <MaxCapacity>20</MaxCapacity>
+        </TrainingSession>
+        <TrainingSession sessionID="S003">
+            <Title>Basketball Drills</Title>
+            <Date>2026-05-03</Date>
+            <StartTime>10:00:00</StartTime>
+            <EndTime>12:00:00</EndTime>
+            <CoachRef>C003</CoachRef>
+            <FacilityRef>F003</FacilityRef>
+            <MaxCapacity>20</MaxCapacity>
+        </TrainingSession>
+        <TrainingSession sessionID="S004">
+            <Title>Tennis Serve Practice</Title>
+            <Date>2026-05-04</Date>
+            <StartTime>14:00:00</StartTime>
+            <EndTime>16:00:00</EndTime>
+            <CoachRef>C004</CoachRef>
+            <FacilityRef>F004</FacilityRef>
+            <MaxCapacity>4</MaxCapacity>
+        </TrainingSession>
+        <TrainingSession sessionID="S005">
+            <Title>Morning Yoga Flow</Title>
+            <Date>2026-05-05</Date>
+            <StartTime>06:30:00</StartTime>
+            <EndTime>07:30:00</EndTime>
+            <CoachRef>C005</CoachRef>
+            <FacilityRef>F005</FacilityRef>
+            <MaxCapacity>15</MaxCapacity>
+        </TrainingSession>
+    </TrainingSessions>
+
+    <!-- ===========================
+         ENTITY 6: COMPETITIONS (x5)
+         =========================== -->
+    <Competitions>
+        <Competition competitionID="CO001">
+            <Name>Regional Football Cup</Name>
+            <Date>2026-06-15</Date>
+            <Location>Stade Municipal, Lyon</Location>
+            <Sport>Football</Sport>
+            <Result>1st Place</Result>
+            <TeamRef>T001</TeamRef>
+        </Competition>
+        <Competition competitionID="CO002">
+            <Name>National Swimming Championship</Name>
+            <Date>2026-07-20</Date>
+            <Location>Aquatic Centre, Paris</Location>
+            <Sport>Swimming</Sport>
+            <Result>3rd Place</Result>
+            <TeamRef>T002</TeamRef>
+        </Competition>
+        <Competition competitionID="CO003">
+            <Name>City Basketball League</Name>
+            <Date>2026-05-30</Date>
+            <Location>Sports Hall, Bordeaux</Location>
+            <Sport>Basketball</Sport>
+            <Result>Runner Up</Result>
+            <TeamRef>T003</TeamRef>
+        </Competition>
+        <Competition competitionID="CO004">
+            <Name>Open Tennis Tournament</Name>
+            <Date>2026-08-10</Date>
+            <Location>Tennis Club, Nice</Location>
+            <Sport>Tennis</Sport>
+            <Result>Semi-Final</Result>
+            <TeamRef>T004</TeamRef>
+        </Competition>
+        <Competition competitionID="CO005">
+            <Name>Wellness Yoga Expo</Name>
+            <Date>2026-09-05</Date>
+            <Location>Convention Centre, Paris</Location>
+            <Sport>Yoga</Sport>
+            <Result>Participant</Result>
+            <TeamRef>T005</TeamRef>
+        </Competition>
+    </Competitions>
+
+    <!-- ===========================
+         ENTITY 7: EQUIPMENT (x5)
+         =========================== -->
+    <Equipment>
+        <Item equipmentID="E001">
+            <Name>Football</Name>
+            <Category>Ball Sports</Category>
+            <Quantity>20</Quantity>
+            <Condition>Good</Condition>
+            <FacilityRef>F001</FacilityRef>
+        </Item>
+        <Item equipmentID="E002">
+            <Name>Swimming Goggles</Name>
+            <Category>Water Sports</Category>
+            <Quantity>30</Quantity>
+            <Condition>Excellent</Condition>
+            <FacilityRef>F002</FacilityRef>
+        </Item>
+        <Item equipmentID="E003">
+            <Name>Basketball</Name>
+            <Category>Ball Sports</Category>
+            <Quantity>15</Quantity>
+            <Condition>Good</Condition>
+            <FacilityRef>F003</FacilityRef>
+        </Item>
+        <Item equipmentID="E004">
+            <Name>Tennis Racket</Name>
+            <Category>Racket Sports</Category>
+            <Quantity>10</Quantity>
+            <Condition>Fair</Condition>
+            <FacilityRef>F004</FacilityRef>
+        </Item>
+        <Item equipmentID="E005">
+            <Name>Yoga Mat</Name>
+            <Category>Fitness</Category>
+            <Quantity>20</Quantity>
+            <Condition>Excellent</Condition>
+            <FacilityRef>F005</FacilityRef>
+        </Item>
+    </Equipment>
+
+    <!-- ============================
+         ENTITY 8: MEMBERSHIPS (x5)
+         ============================ -->
+    <Memberships>
+        <Membership membershipID="MS001">
+            <MemberRef>M001</MemberRef>
+            <Category>Premium</Category>
+            <StartDate>2026-01-01</StartDate>
+            <EndDate>2026-12-31</EndDate>
+            <Fee>300.00</Fee>
+        </Membership>
+        <Membership membershipID="MS002">
+            <MemberRef>M002</MemberRef>
+            <Category>Basic</Category>
+            <StartDate>2026-01-01</StartDate>
+            <EndDate>2026-06-30</EndDate>
+            <Fee>150.00</Fee>
+        </Membership>
+        <Membership membershipID="MS003">
+            <MemberRef>M003</MemberRef>
+            <Category>Student</Category>
+            <StartDate>2026-02-01</StartDate>
+            <EndDate>2026-07-31</EndDate>
+            <Fee>80.00</Fee>
+        </Membership>
+        <Membership membershipID="MS004">
+            <MemberRef>M004</MemberRef>
+            <Category>VIP</Category>
+            <StartDate>2026-01-01</StartDate>
+            <EndDate>2026-12-31</EndDate>
+            <Fee>500.00</Fee>
+        </Membership>
+        <Membership membershipID="MS005">
+            <MemberRef>M005</MemberRef>
+            <Category>Premium</Category>
+            <StartDate>2026-03-01</StartDate>
+            <EndDate>2026-12-31</EndDate>
+            <Fee>270.00</Fee>
+        </Membership>
+    </Memberships>
+
+    <!-- ===========================
+         ENTITY 9: BOOKINGS (x5)
+         =========================== -->
+    <Bookings>
+        <Booking bookingID="B001">
+            <MemberRef>M001</MemberRef>
+            <FacilityRef>F001</FacilityRef>
+            <Date>2026-05-10</Date>
+            <StartTime>09:00:00</StartTime>
+            <EndTime>11:00:00</EndTime>
+            <Status>Confirmed</Status>
+        </Booking>
+        <Booking bookingID="B002">
+            <MemberRef>M002</MemberRef>
+            <FacilityRef>F002</FacilityRef>
+            <Date>2026-05-11</Date>
+            <StartTime>07:00:00</StartTime>
+            <EndTime>08:00:00</EndTime>
+            <Status>Pending</Status>
+        </Booking>
+        <Booking bookingID="B003">
+            <MemberRef>M003</MemberRef>
+            <FacilityRef>F003</FacilityRef>
+            <Date>2026-05-12</Date>
+            <StartTime>10:00:00</StartTime>
+            <EndTime>12:00:00</EndTime>
+            <Status>Confirmed</Status>
+        </Booking>
+        <Booking bookingID="B004">
+            <MemberRef>M004</MemberRef>
+            <FacilityRef>F004</FacilityRef>
+            <Date>2026-05-13</Date>
+            <StartTime>15:00:00</StartTime>
+            <EndTime>16:00:00</EndTime>
+            <Status>Cancelled</Status>
+        </Booking>
+        <Booking bookingID="B005">
+            <MemberRef>M005</MemberRef>
+            <FacilityRef>F005</FacilityRef>
+            <Date>2026-05-14</Date>
+            <StartTime>06:30:00</StartTime>
+            <EndTime>07:30:00</EndTime>
+            <Status>Confirmed</Status>
+        </Booking>
+    </Bookings>
+
+</SportsClub>

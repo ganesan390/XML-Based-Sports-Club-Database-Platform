@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Bookings",
+  "description": "JSON Schema for validating output_9.json",
+  "type": "object",
+  "required": ["bookings"],
+  "properties": {
+    "bookings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["bookingID", "memberID", "facilityID", "date", "startTime", "endTime", "status"],
+        "properties": {
+          "bookingID":  { "type": "string", "pattern": "^B[0-9]{3}$" },
+          "memberID":   { "type": "string", "pattern": "^M[0-9]{3}$" },
+          "facilityID": { "type": "string", "pattern": "^F[0-9]{3}$" },
+          "date":       { "type": "string", "format": "date" },
+          "startTime":  { "type": "string" },
+          "endTime":    { "type": "string" },
+          "status":     { "type": "string", "enum": ["Confirmed", "Pending", "Cancelled"] }
+        }
+      }
+    }
+  }
+}
